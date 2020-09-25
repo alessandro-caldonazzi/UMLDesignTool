@@ -19,22 +19,31 @@ import java.io.File;
 public class Export extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent anActionEvent) {
-        UMLDiagramPanel panel = UMLToolWindowContentPanel.getDrawingPanel();
+        UMLDiagramPanel tp = UMLToolWindowContentPanel.getDrawingPanel();
         JFileChooser f = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Photo", "png", "png");
         f.setFileFilter(filter);
         f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         f.showSaveDialog(null);
 
-        int w = panel.getWidth();
-        int h = panel.getHeight();
-        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = bi.createGraphics();
-        panel.paint(g);
-        g.dispose();
+        int width = tp.getWidth() ;
+        int height = tp.getHeight() ;
+
+        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = img.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+        g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+        tp.print(g2d);
+        g2d.dispose();
 
         try {
-            ImageIO.write(bi, "png", new File(String.valueOf(f.getSelectedFile())+".png"));
+            ImageIO.write(img, "png", new File(String.valueOf(f.getSelectedFile())+".png"));
         } catch (Exception ex) {
             System.out.println(ex);
             ex.printStackTrace();
