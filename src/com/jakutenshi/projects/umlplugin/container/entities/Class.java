@@ -8,6 +8,8 @@ import com.jakutenshi.projects.umlplugin.container.entities.attributes.Method;
 import com.jakutenshi.projects.umlplugin.container.entities.attributes.TypeParameter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -101,6 +103,8 @@ public class Class extends UMLEntity{
     }
 
     public ArrayList<Method> getMethods() {
+        ArrayList<Method> methods = this.methods;
+        Collections.reverse(methods);
         return methods;
     }
 

@@ -1,10 +1,10 @@
 <idea-plugin>
-    <id>com.jakutenshi.projects.umlplugin</id>
-    <name>UML Design Tool Plugin</name>
-    <version>0.1a</version>
-    <vendor email="jakutenshi@gmail.com">JAkutenshi</vendor>
+  <id>com.jakutenshi.projects.umlplugin</id>
+  <name>UML Design Tool</name>
+  <version>0.1a</version>
+  <vendor email="jakutenshi@gmail.com">JAkutenshi</vendor>
 
-    <description><![CDATA[
+  <description><![CDATA[
         Plugin for IntelliJ IDEA CE 2016.1.1 for UML designing and code generation. <br>
         Starts as my Bachelor's grade works.<br>
         GitHub: https://github.com/JAkutenshi/UMLDesignToolPluginProj<br>
@@ -12,65 +12,65 @@
         by JAkutenshi<br>
     ]]></description>
 
-    <change-notes><![CDATA[
+  <change-notes><![CDATA[
         Alpha version.
         Genering UML Diagrams by your Java project source code.<br>
         Known bugs: scroll bar problem.<br>
         Don't support multithreading yet.<br>
         ]]>
-    </change-notes>
+  </change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="141.0"/>
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-    on how to target different products -->
-    <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
-    -->
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+  on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-        <toolWindow id="UML design tool window"
-                    icon="/icons/tool-window.png"
-                    anchor="right"
-                    factoryClass="com.jakutenshi.projects.umlplugin.ui.UMLPluginToolWindowFactory">
-        </toolWindow>
-    </extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <toolWindow id="UML design tool"
+                icon="/icons/tool-window.png"
+                anchor="right"
+                factoryClass="com.jakutenshi.projects.umlplugin.ui.UMLPluginToolWindowFactory">
+    </toolWindow>
+  </extensions>
 
-    <actions>
-        <!-- Add your actions here -->
-        <action class="com.jakutenshi.projects.umlplugin.actions.GenDiagramAction"
-                id="UMLPlugin.GenDiagram"
-                text="Generate diagram"
-                description="Generate class-diagram by your code"
-                icon="/icons/gen-diagram.png">
-        </action>
-        <action class="com.jakutenshi.projects.umlplugin.actions.ZoomInAction"
-                id="UMLPlugin.ZoomIn"
-                text="Zoom In"
-                description="Zoom in the class-diagram view"
-                icon="/icons/zoom-in.png">
-        </action>
-        <action class="com.jakutenshi.projects.umlplugin.actions.ZoomOutAction"
-                id="UMLPlugin.ZoomOut"
-                text="Zoom Out"
-                description="Zoom out the class-diagram view"
-                icon="/icons/zoom-out.png">
-        </action>
-	    <action class="com.jakutenshi.projects.umlplugin.actions.ReturnScaleToDefaultAction"
-	            id="UMLPlugin.ReturnScale"
-	            text="Return scale"
-	            description="Return class-diagram view scale to default value 1:1"
-	            icon="/icons/return-scale-to-default.png">
-	    </action>
+  <actions>
+    <!-- Add your actions here -->
+    <action class="com.jakutenshi.projects.umlplugin.actions.GenDiagramAction"
+            id="UMLPlugin.GenDiagram"
+            text="Generate diagram"
+            description="Generate class-diagram by your code"
+            icon="/icons/gen-diagram.png">
+    </action>
+    <action class="com.jakutenshi.projects.umlplugin.actions.ZoomInAction"
+            id="UMLPlugin.ZoomIn"
+            text="Zoom In"
+            description="Zoom in the class-diagram view"
+            icon="/icons/zoom-in.png">
+    </action>
+    <action class="com.jakutenshi.projects.umlplugin.actions.ZoomOutAction"
+            id="UMLPlugin.ZoomOut"
+            text="Zoom Out"
+            description="Zoom out the class-diagram view"
+            icon="/icons/zoom-out.png">
+    </action>
+    <action class="com.jakutenshi.projects.umlplugin.actions.ReturnScaleToDefaultAction"
+            id="UMLPlugin.ReturnScale"
+            text="Return Scale"
+            description="Return class-diagram view scale to default value 1:1"
+            icon="/icons/return-scale-to-default.png">
+    </action>
 
-		<group id="UMLPlugin.UI.Toolbar">
-            <reference ref="UMLPlugin.GenDiagram"/>
-            <separator/>
-            <reference ref="UMLPlugin.ZoomIn"/>
-            <reference ref="UMLPlugin.ZoomOut"/>
-            <reference ref="UMLPlugin.ReturnScale"/>
-        </group>
-    </actions>
+    <group id="UMLPlugin.UI.Toolbar">
+      <reference ref="UMLPlugin.GenDiagram"/>
+      <separator/>
+      <reference ref="UMLPlugin.ZoomIn"/>
+      <reference ref="UMLPlugin.ZoomOut"/>
+      <reference ref="UMLPlugin.ReturnScale"/>
+    </group>
+  </actions>
 </idea-plugin>

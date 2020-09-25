@@ -27,7 +27,7 @@ public abstract class UMLEntityParser {
         field.setKeywords(modifierParser.getParseKeywords());
 //тип
         field.setType(psiField.getType().getPresentableText());
-        field.setTypePath(psiField.getType().getCanonicalText());
+        //field.setTypePath(psiField.getType().getCanonicalText());
 //имя
         field.setName(psiField.getName());
 
