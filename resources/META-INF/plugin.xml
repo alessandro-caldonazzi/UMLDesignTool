@@ -68,13 +68,21 @@
     <action class="com.jakutenshi.projects.umlplugin.actions.DisableFieldPath"
             id="UMLPlugin.DisableFieldPath"
             text="Disable Type Path"
-            description="Return class-diagram view scale to default value 1:1"
+            description="Disable the link between class and field (Field Path)"
+            icon="/icons/return-scale-to-default.png">
+    </action>
+
+    <action class="com.jakutenshi.projects.umlplugin.actions.Export"
+            id="UMLPlugin.Export"
+            text="Export to Png"
+            description="Export to Png"
             icon="/icons/return-scale-to-default.png">
     </action>
 
     <group id="UMLPlugin.UI.Toolbar">
       <reference ref="UMLPlugin.GenDiagram"/>
       <separator/>
+      <reference ref="UMLPlugin.Export"/>
     </group>
 
     <group id="UMLPlugin.UI.Zoom" text="Zoom in/out" popup="true" icon="/icons/return-scale-to-default.png">

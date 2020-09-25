@@ -36,7 +36,7 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
     private final int SPACE = 10;
 
     public UMLDiagramPanel() {
-        setPreferredSize(new Dimension(5000, 5000));
+        setPreferredSize(new Dimension(300, 300));
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
