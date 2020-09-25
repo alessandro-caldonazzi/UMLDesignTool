@@ -3,6 +3,7 @@ package com.jakutenshi.projects.umlplugin.parsers;
 import com.intellij.psi.*;
 import com.jakutenshi.projects.umlplugin.container.entities.UMLEntity;
 import com.jakutenshi.projects.umlplugin.container.entities.attributes.*;
+import com.jakutenshi.projects.umlplugin.util.Options;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,8 @@ public abstract class UMLEntityParser {
         field.setKeywords(modifierParser.getParseKeywords());
 //тип
         field.setType(psiField.getType().getPresentableText());
-        //field.setTypePath(psiField.getType().getCanonicalText());
+        if(!Options.disableFieldPath)
+            field.setTypePath(psiField.getType().getCanonicalText());
 //имя
         field.setName(psiField.getName());
 

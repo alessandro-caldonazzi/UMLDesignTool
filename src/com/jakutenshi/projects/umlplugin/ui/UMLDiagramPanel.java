@@ -7,6 +7,7 @@ import com.jakutenshi.projects.umlplugin.container.entities.UMLEntity;
 import com.jakutenshi.projects.umlplugin.container.entities.attributes.Field;
 import com.jakutenshi.projects.umlplugin.drawers.*;
 import com.jakutenshi.projects.umlplugin.drawers.relationships.*;
+import com.jakutenshi.projects.umlplugin.util.Options;
 import com.jakutenshi.projects.umlplugin.util.UMLDiagramContainerObserver;
 
 import javax.swing.*;
@@ -198,7 +199,7 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
                 if (!aClass.isUtility()) {
                     for (Field field : aClass.getFields()) {
                         //учитываем экземпляры самого класса
-                        if (!field.getTypePath().equals(aClass.getPackagePath())) {
+                        if (!Options.disableFieldPath && !field.getTypePath().equals(aClass.getPackagePath())) {
                             addRelarioship(aClass, field.getTypePath(), new Composition());
                         }
                     }

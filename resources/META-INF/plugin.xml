@@ -2,7 +2,7 @@
   <id>com.jakutenshi.projects.umlplugin</id>
   <name>UML Design Tool</name>
   <version>0.1a</version>
-  <vendor email="jakutenshi@gmail.com">JAkutenshi</vendor>
+  <vendor>JAkutenshi</vendor>
 
   <description><![CDATA[
         Plugin for IntelliJ IDEA CE 2016.1.1 for UML designing and code generation. <br>
@@ -42,7 +42,7 @@
     <!-- Add your actions here -->
     <action class="com.jakutenshi.projects.umlplugin.actions.GenDiagramAction"
             id="UMLPlugin.GenDiagram"
-            text="Generate diagram"
+            text="Generate Diagram"
             description="Generate class-diagram by your code"
             icon="/icons/gen-diagram.png">
     </action>
@@ -65,12 +65,20 @@
             icon="/icons/return-scale-to-default.png">
     </action>
 
+    <action class="com.jakutenshi.projects.umlplugin.actions.DisableFieldPath"
+            id="UMLPlugin.DisableFieldPath"
+            text="Disable Type Path"
+            description="Return class-diagram view scale to default value 1:1"
+            icon="/icons/return-scale-to-default.png">
+    </action>
+
     <group id="UMLPlugin.UI.Toolbar">
       <reference ref="UMLPlugin.GenDiagram"/>
       <separator/>
       <reference ref="UMLPlugin.ZoomIn"/>
       <reference ref="UMLPlugin.ZoomOut"/>
       <reference ref="UMLPlugin.ReturnScale"/>
+      <reference ref="UMLPlugin.DisableFieldPath"/>
     </group>
   </actions>
 </idea-plugin>
