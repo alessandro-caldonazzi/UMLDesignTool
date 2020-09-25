@@ -75,9 +75,17 @@
     <group id="UMLPlugin.UI.Toolbar">
       <reference ref="UMLPlugin.GenDiagram"/>
       <separator/>
+    </group>
+
+    <group id="UMLPlugin.UI.Zoom" text="Zoom in/out" popup="true" icon="/icons/return-scale-to-default.png">
+      <add-to-group group-id="UMLPlugin.UI.Toolbar" anchor="after" relative-to-action="UMLPlugin.UI.Zoom"/>
+      <reference ref="UMLPlugin.ReturnScale"/>
       <reference ref="UMLPlugin.ZoomIn"/>
       <reference ref="UMLPlugin.ZoomOut"/>
-      <reference ref="UMLPlugin.ReturnScale"/>
+    </group>
+
+    <group id="UMLPlugin.UI.Prova" text="Static Grouped Actions" popup="true" icon="/icons/zoom-out.png">
+      <add-to-group group-id="UMLPlugin.UI.Toolbar" anchor="after" relative-to-action="UMLPlugin.UI.Prova"/>
       <reference ref="UMLPlugin.DisableFieldPath"/>
     </group>
   </actions>
