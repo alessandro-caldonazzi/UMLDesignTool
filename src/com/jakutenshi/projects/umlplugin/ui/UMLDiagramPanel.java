@@ -32,7 +32,7 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
     private int currentX;
     private int currentY;
     private double scale = 1;
-
+    
     private final int SPACE = 10;
 
     public UMLDiagramPanel() {
@@ -146,6 +146,8 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
         int maxHeight = currentY * 2 + (maxDrawnEntityHeight + SPACE * 2) * drawers.size();
 
         setPreferredSize(new Dimension(maxWidth, maxHeight));
+
+
 
         createsRelations();
         fillCoordinates();
