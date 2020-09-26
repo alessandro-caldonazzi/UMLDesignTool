@@ -117,10 +117,10 @@ public abstract class UMLDrawer implements Observable <UMLRelationDrawer> {
     }
 
     protected void drawFrame(Graphics2D g) {
-//рисуем прямогугольник
+        // draw a rectangle
         g.setColor(Color.WHITE);
         g.fillRect(getX(), getY(), getFrameWidth(), getFrameHeight());
-//рамку вокруг
+        // frame around
         g.setColor(Color.BLACK);
         g.drawRect(getX(), getY(), getFrameWidth(), getFrameHeight());
     }

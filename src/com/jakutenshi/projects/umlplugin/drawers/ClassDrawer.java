@@ -26,19 +26,25 @@ public class ClassDrawer extends UMLDrawer {
     public void draw(Graphics2D g) {
         int currentY = getY() + FRAME_MARGIN + SYMBOL_HEIGHT;
 
-//рисуем прямоугольник
+        // draw a rectangle
         drawFrame(g);
-//заголовок
+
+        // header
         currentY = drawTitle(currentY, g);
-//разделитель
+
+        // separator
         currentY = drawSeparator(currentY, g);
-//поля
+
+        // fields
         currentY = drawSection(currentY, drawnFields, g);
-//разделитель
+
+        // separator
         currentY = drawSeparator(currentY, g);
-//методы
+
+        // methods
         drawSection(currentY, drawnMethods, g);
-//генерики
+
+        // generics
         if (generics != null) {
             generics.draw(g);
         }
