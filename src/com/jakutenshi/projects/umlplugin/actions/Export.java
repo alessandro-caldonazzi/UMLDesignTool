@@ -26,9 +26,12 @@ public class Export extends AnAction {
         f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         f.showSaveDialog(null);
 
-        int width = tp.getWidth() ;
-        int height = tp.getHeight() ;
+        int width = tp.getWidth() * 2 + 40;
+        int height = tp.getHeight() * 2 + 40;
 
+        tp.setSize(width, height);
+        tp.doLayout();
+        tp.zoomIn();
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = img.createGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
@@ -42,6 +45,9 @@ public class Export extends AnAction {
         tp.print(g2d);
         g2d.dispose();
 
+        tp.setSize((width-40)/2, (height-40)/2);
+        tp.doLayout();
+        tp.zoomOut();
         try {
             ImageIO.write(img, "png", new File(String.valueOf(f.getSelectedFile())+".png"));
         } catch (Exception ex) {
