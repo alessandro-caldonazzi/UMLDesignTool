@@ -1,22 +1,20 @@
 <idea-plugin>
   <id>com.jakutenshi.projects.umlplugin</id>
-  <name>UML Design Tool</name>
-  <version>0.1a</version>
-  <vendor>JAkutenshi</vendor>
+  <name>UML Generator</name>
+  <version>0.1b</version>
+  <vendor>Alessandro Caldonazzi</vendor>
 
   <description><![CDATA[
-        Plugin for IntelliJ IDEA CE 2016.1.1 for UML designing and code generation. <br>
-        Starts as my Bachelor's grade works.<br>
-        GitHub: https://github.com/JAkutenshi/UMLDesignToolPluginProj<br>
+        Plugin for IntelliJ IDEA CE 2020.2 for UML generation. <br>
+        Forked from @JAkutenshi.<br>
+        GitHub: <a href="https://github.com/alessandro-caldonazzi/UMLDesignTool">https://github.com/alessandro-caldonazzi/UMLDesignTool</a><br>
         <br>
-        by JAkutenshi<br>
+        by Alessandro Caldonazzi<br>
     ]]></description>
 
   <change-notes><![CDATA[
-        Alpha version.
-        Genering UML Diagrams by your Java project source code.<br>
-        Known bugs: scroll bar problem.<br>
-        Don't support multithreading yet.<br>
+        Beta version.
+        Generating UML Diagrams from your Java project source code.<br>
         ]]>
   </change-notes>
 
@@ -31,7 +29,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
-    <toolWindow id="UML design tool"
+    <toolWindow id="UML Generator"
                 icon="/icons/tool-window.png"
                 anchor="right"
                 factoryClass="com.jakutenshi.projects.umlplugin.ui.UMLPluginToolWindowFactory">
@@ -44,7 +42,7 @@
             id="UMLPlugin.GenDiagram"
             text="Generate Diagram"
             description="Generate class-diagram by your code"
-            icon="/icons/gen-diagram.png">
+            icon="/icons/generate.png">
     </action>
     <action class="com.jakutenshi.projects.umlplugin.actions.ZoomInAction"
             id="UMLPlugin.ZoomIn"
@@ -62,21 +60,21 @@
             id="UMLPlugin.ReturnScale"
             text="Return Scale"
             description="Return class-diagram view scale to default value 1:1"
-            icon="/icons/return-scale-to-default.png">
+            icon="/icons/zoom-reset.png">
     </action>
 
     <action class="com.jakutenshi.projects.umlplugin.actions.DisableFieldPath"
             id="UMLPlugin.DisableFieldPath"
             text="Disable Type Path"
             description="Disable the link between class and field (Field Path)"
-            icon="/icons/return-scale-to-default.png">
+            icon="/icons/remove.png">
     </action>
 
     <action class="com.jakutenshi.projects.umlplugin.actions.Export"
             id="UMLPlugin.Export"
             text="Export to Png"
             description="Export to Png"
-            icon="/icons/return-scale-to-default.png">
+            icon="/icons/export.png">
     </action>
 
     <group id="UMLPlugin.UI.Toolbar">
@@ -85,14 +83,14 @@
       <reference ref="UMLPlugin.Export"/>
     </group>
 
-    <group id="UMLPlugin.UI.Zoom" text="Zoom in/out" popup="true" icon="/icons/return-scale-to-default.png">
+    <group id="UMLPlugin.UI.Zoom" text="Zoom in/out" popup="true" icon="/icons/zoom.png">
       <add-to-group group-id="UMLPlugin.UI.Toolbar" anchor="after" relative-to-action="UMLPlugin.UI.Zoom"/>
       <reference ref="UMLPlugin.ReturnScale"/>
       <reference ref="UMLPlugin.ZoomIn"/>
       <reference ref="UMLPlugin.ZoomOut"/>
     </group>
 
-    <group id="UMLPlugin.UI.Prova" text="Static Grouped Actions" popup="true" icon="/icons/zoom-out.png">
+    <group id="UMLPlugin.UI.Prova" text="Static Grouped Actions" popup="true" icon="/icons/settings.png">
       <add-to-group group-id="UMLPlugin.UI.Toolbar" anchor="after" relative-to-action="UMLPlugin.UI.Prova"/>
       <reference ref="UMLPlugin.DisableFieldPath"/>
     </group>
