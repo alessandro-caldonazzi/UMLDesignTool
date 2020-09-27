@@ -26,8 +26,8 @@ public class Export extends AnAction {
         f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         f.showSaveDialog(null);
 
-        int width = tp.getWidth() * 2 + 40;
-        int height = tp.getHeight() * 2 + 40;
+        int width = (tp.getWidth()>Integer.MAX_VALUE)?Integer.MAX_VALUE:tp.getWidth() * 2 + 40;
+        int height = (tp.getHeight()>Integer.MAX_VALUE)?Integer.MAX_VALUE:tp.getHeight() * 2 + 40;
 
         tp.setSize(width, height);
         tp.doLayout();
