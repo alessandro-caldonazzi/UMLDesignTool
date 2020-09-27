@@ -1,9 +1,10 @@
 <idea-plugin>
-  <id>com.jakutenshi.projects.umlplugin</id>
+  <id>com.caldonazzi.alessandro.uml</id>
   <name>UML Generator</name>
-  <version>0.1b</version>
+  <version>0.1.2</version>
   <vendor>Alessandro Caldonazzi</vendor>
 
+  <depends>com.intellij.modules.java</depends>
   <description><![CDATA[
         Plugin for IntelliJ IDEA CE 2020.2 for UML generation. <br>
         Forked from @JAkutenshi.<br>
