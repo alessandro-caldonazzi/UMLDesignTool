@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.caldonazzi.alessandro.uml</id>
   <name>UML Generator</name>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
   <vendor>Alessandro Caldonazzi</vendor>
 
   <depends>com.intellij.modules.java</depends>
@@ -11,6 +11,11 @@
         GitHub: <a href="https://github.com/alessandro-caldonazzi/UMLDesignTool">https://github.com/alessandro-caldonazzi/UMLDesignTool</a><br>
         <br>
         by Alessandro Caldonazzi<br>
+        <br>USAGE:<br>
+        Click the "UML Generator" button for the rigth side of IDE<br>
+        Click on the first icon to generate the UML<br>
+        <br>EXPORT:<br>
+        To export click the second icon, select a destination path and confirm<br>
     ]]></description>
 
   <change-notes><![CDATA[
