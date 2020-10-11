@@ -117,11 +117,13 @@ public abstract class UMLDrawer implements Observable <UMLRelationDrawer> {
     }
 
     protected void drawFrame(Graphics2D g) {
+        MaxDrawerPoints.checkForMax(getX() + getFrameWidth(), getY() + getFrameHeight());
         // draw a rectangle
         g.setColor(Color.WHITE);
         g.fillRect(getX(), getY(), getFrameWidth(), getFrameHeight());
         // frame around
         g.setColor(Color.BLACK);
+        System.out.println("draw: " + (getY() + getFrameHeight()));
         g.drawRect(getX(), getY(), getFrameWidth(), getFrameHeight());
     }
 

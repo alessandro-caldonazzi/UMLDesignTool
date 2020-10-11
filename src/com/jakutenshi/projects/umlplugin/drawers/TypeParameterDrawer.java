@@ -21,6 +21,7 @@ public class TypeParameterDrawer extends UMLDrawer {
 
     @Override
     public void draw(Graphics2D g) {
+        MaxDrawerPoints.checkForMax(getX() + getFrameWidth(), getY() + getFrameHeight());
         g.setColor(Color.WHITE);
         g.fillRoundRect(getX(), getY(), getFrameWidth(), getFrameHeight(), 10, 10);
         g.setColor(Color.BLACK);

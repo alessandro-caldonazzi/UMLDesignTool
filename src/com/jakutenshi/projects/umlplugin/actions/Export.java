@@ -2,6 +2,7 @@ package com.jakutenshi.projects.umlplugin.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.jakutenshi.projects.umlplugin.drawers.MaxDrawerPoints;
 import com.jakutenshi.projects.umlplugin.ui.UMLDiagramPanel;
 import com.jakutenshi.projects.umlplugin.ui.UMLToolWindowContentPanel;
 import com.jakutenshi.projects.umlplugin.util.Options;
@@ -26,9 +27,9 @@ public class Export extends AnAction {
         f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         f.showSaveDialog(null);
 
-        int width = (tp.getWidth()>Integer.MAX_VALUE)?Integer.MAX_VALUE:tp.getWidth() * 2 + 40;
-        int height = (tp.getHeight()>Integer.MAX_VALUE)?Integer.MAX_VALUE:tp.getHeight() * 2 + 40;
-
+        int width = MaxDrawerPoints.maxX * 2 + 40;
+        int height = MaxDrawerPoints.maxY * 2 + 40;
+        System.out.println(height);
         tp.setSize(width, height);
         tp.doLayout();
         tp.zoomIn();
