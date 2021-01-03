@@ -16,9 +16,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by JAkutenshi on 26.05.2016.
+ * Edited by Alessandro Caldonazzi on 03/01/2021
  */
 public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserver {
     private UMLDrawer draggedDrawer;
@@ -157,7 +159,7 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
     private void fillCoordinates() {
         currentX = SPACE;
         currentY = SPACE;
-
+        Random rand = new Random();
         Object[] keys =  drawers.keySet().toArray();
         UMLDrawer[] values = drawers.values().toArray(new UMLDrawer[0]);
         int i;
@@ -178,13 +180,14 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
         int maxYInRow = 0;
         int yNextRow = 0;
         for(i=0; i<keys.length; i++){
+            int randomSpace = SPACE + rand.nextInt(30);
             values[i].setX(currentX);
             values[i].setY(currentY);
-            if(values[i].getFrameWidth() / values[i].getFrameHeight() > 2 || values[i].getFrameWidth() > maxDrawnEntityWidth/1.25  ){
-                currentY += SPACE + values[i].getFrameHeight();
-            }else if(currentX > maxDrawnEntityWidth * 1.5){
-                currentY = SPACE + yNextRow;
-                currentX = SPACE;
+            if(values[i].getFrameWidth() / values[i].getFrameHeight() > 3 || values[i].getFrameWidth() > maxDrawnEntityWidth*0.95  ){
+                currentY += + values[i].getFrameHeight() + randomSpace;
+            }else if(currentX > maxDrawnEntityWidth * 2){
+                currentY = yNextRow + randomSpace;
+                currentX = randomSpace;
                 maxYInRow = 0;
                 yNextRow = 0;
             }else{
@@ -192,7 +195,7 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
                     maxYInRow = values[i].getFrameHeight();
                     yNextRow = currentY + maxYInRow;
                 }
-                currentX += SPACE + values[i].getFrameWidth();
+                currentX += values[i].getFrameWidth() + randomSpace;
             }
         }
 
