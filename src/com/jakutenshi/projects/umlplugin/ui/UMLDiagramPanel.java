@@ -16,9 +16,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by JAkutenshi on 26.05.2016.
+ * Edited by Alessandro Caldonazzi on 03/01/2021
  */
 public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserver {
     private UMLDrawer draggedDrawer;
@@ -33,7 +35,7 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
     private int currentY;
     private double scale = 1;
     
-    private final int SPACE = 10;
+    private final int SPACE = 20;
 
     public UMLDiagramPanel() {
         setPreferredSize(new Dimension(300, 300));
@@ -155,25 +157,48 @@ public class UMLDiagramPanel extends JPanel implements UMLDiagramContainerObserv
     }
 
     private void fillCoordinates() {
-        UMLDrawer drawer;
         currentX = SPACE;
         currentY = SPACE;
-        int rows = 1 + (int) Math.sqrt(drawers.size());
-        Object[] keys = drawers.keySet().toArray();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < rows; j++) {
-                if (i * rows + j < drawers.size()) {
-                    drawer = drawers.get(keys[i * rows + j]);
-                    drawer.setX(currentX);
-                    drawer.setY(currentY);
-                    currentX += maxDrawnEntityWidth + SPACE;
-                } else {
-                    break;
+        Random rand = new Random();
+        Object[] keys =  drawers.keySet().toArray();
+        UMLDrawer[] values = drawers.values().toArray(new UMLDrawer[0]);
+        int i;
+
+        for(i=0; i<values.length; i++){
+            for(int j = i+1; j<values.length; j++){
+                if(values[i].getFrameWidth()< values[j].getFrameWidth()){
+                    Object temp = keys[i];
+                    keys[i] = keys[j];
+                    keys[j] = temp;
+
+                    UMLDrawer tmp = values[i];
+                    values[i] = values[j];
+                    values[j] = tmp;
                 }
             }
-            currentY += maxDrawnEntityHeight + SPACE;
-            currentX = 15;
         }
+        int maxYInRow = 0;
+        int yNextRow = 0;
+        for(i=0; i<keys.length; i++){
+            int randomSpace = SPACE + rand.nextInt(30);
+            values[i].setX(currentX);
+            values[i].setY(currentY);
+            if(values[i].getFrameWidth() / values[i].getFrameHeight() > 3 || values[i].getFrameWidth() > maxDrawnEntityWidth*0.95  ){
+                currentY += + values[i].getFrameHeight() + randomSpace;
+            }else if(currentX > maxDrawnEntityWidth * 2){
+                currentY = yNextRow + randomSpace;
+                currentX = randomSpace;
+                maxYInRow = 0;
+                yNextRow = 0;
+            }else{
+                if(values[i].getFrameHeight()>maxYInRow){
+                    maxYInRow = values[i].getFrameHeight();
+                    yNextRow = currentY + maxYInRow;
+                }
+                currentX += values[i].getFrameWidth() + randomSpace;
+            }
+        }
+
     }
 
     private void createsRelations() {
