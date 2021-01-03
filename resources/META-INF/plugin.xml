@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.caldonazzi.alessandro.uml</id>
   <name>UML Generator</name>
-  <version>0.1.4</version>
+  <version>0.1.5</version>
   <vendor>Alessandro Caldonazzi</vendor>
 
   <depends>com.intellij.modules.java</depends>
