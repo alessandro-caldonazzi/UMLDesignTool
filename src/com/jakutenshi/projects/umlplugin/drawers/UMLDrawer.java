@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by JAkutenshi on 29.05.2016.
  */
 public abstract class UMLDrawer implements Observable <UMLRelationDrawer> {
-    protected class DrawnLine {
+    public class DrawnLine {
         private Font font = new Font(DEFAULT_LINE_FONT,
                 DEFAULT_LINE_FONT_STYLE,
                 DEFAULT_LINE_FONT_SIZE);
@@ -123,7 +123,7 @@ public abstract class UMLDrawer implements Observable <UMLRelationDrawer> {
         g.fillRect(getX(), getY(), getFrameWidth(), getFrameHeight());
         // frame around
         g.setColor(Color.BLACK);
-        System.out.println("draw: " + (getY() + getFrameHeight()));
+        //System.out.println("draw: " + (getY() + getFrameHeight()));
         g.drawRect(getX(), getY(), getFrameWidth(), getFrameHeight());
     }
 
@@ -139,11 +139,11 @@ public abstract class UMLDrawer implements Observable <UMLRelationDrawer> {
         line.setFont(line.getFont().deriveFont(fontAttributes));
     }
 
-    protected DrawnLine getDrawnTitle() {
+    public DrawnLine getDrawnTitle() {
         return drawnTitle;
     }
 
-    protected void setDrawnTitle(DrawnLine drawnTitle) {
+    public void setDrawnTitle(DrawnLine drawnTitle) {
         this.drawnTitle = drawnTitle;
     }
 
