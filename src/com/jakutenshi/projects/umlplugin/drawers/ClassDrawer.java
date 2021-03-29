@@ -16,8 +16,6 @@ public class ClassDrawer extends UMLDrawer {
     private LinkedList<DrawnLine> drawnFields;
     private LinkedList<DrawnLine> drawnMethods;
 
-
-
     public ClassDrawer(UMLEntity entity) {
         super(entity);
     }
@@ -51,6 +49,10 @@ public class ClassDrawer extends UMLDrawer {
 
     }
 
+    public LinkedList<DrawnLine> getDrawnFields() {
+        return drawnFields;
+    }
+
     @Override
     protected void fillContent(UMLEntity entity) {
         Class aClass = (Class) entity;
@@ -59,13 +61,14 @@ public class ClassDrawer extends UMLDrawer {
 //поля
         drawnFields = new LinkedList<>();
         for(Field field : aClass.getFields()) {
-            drawnFields.addFirst(new DrawnLine(field.toUML()));
-            if (drawnFields.getFirst().getLine().length() > maxLength) {
-                maxLength = drawnFields.getFirst().getLine().length();
-            }
-            if (field.getKeywords().contains(Keyword.STATIC)) {
-                makeFontUnderlined(drawnFields.getFirst());
-            }
+
+                drawnFields.addFirst(new DrawnLine(field.toUML()));
+                if (drawnFields.getFirst().getLine().length() > maxLength) {
+                    maxLength = drawnFields.getFirst().getLine().length();
+                }
+                if (field.getKeywords().contains(Keyword.STATIC)) {
+                    makeFontUnderlined(drawnFields.getFirst());
+                }
         }
 //методы
         drawnMethods = new LinkedList<>();

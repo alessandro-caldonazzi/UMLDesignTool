@@ -9,6 +9,7 @@ public class Parameter extends EnumConstant {
     private HashSet<Keyword> keywords = getKeywords();
     private String type;
     private String typePath;
+    private boolean toDraw = true;
 
     @Override
     public String toUML() {
@@ -50,6 +51,14 @@ public class Parameter extends EnumConstant {
 
     public Parameter() {
 
+    }
+
+    public void setToDraw(boolean toDraw) {
+        this.toDraw = toDraw;
+    }
+
+    public boolean isToDraw() {
+        return toDraw;
     }
 
     public HashSet<Keyword> getKeywords() {
