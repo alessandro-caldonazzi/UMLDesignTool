@@ -29,7 +29,7 @@ public class Export extends AnAction {
 
         int width = MaxDrawerPoints.maxX * 2 + 40;
         int height = MaxDrawerPoints.maxY * 2 + 40;
-        System.out.println(height);
+
         tp.setSize(width, height);
         tp.doLayout();
         tp.zoomIn();
@@ -52,7 +52,6 @@ public class Export extends AnAction {
         try {
             ImageIO.write(img, "png", new File(String.valueOf(f.getSelectedFile())+".png"));
         } catch (Exception ex) {
-            System.out.println(ex);
             ex.printStackTrace();
         }
     }
