@@ -6,7 +6,9 @@ import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiTypeParameter;
 import com.jakutenshi.projects.umlplugin.container.entities.Class;
 import com.jakutenshi.projects.umlplugin.container.entities.UMLEntity;
-
+import com.jakutenshi.projects.umlplugin.container.entities.attributes.Keyword;
+import com.jakutenshi.projects.umlplugin.container.entities.attributes.Method;
+import java.util.ArrayList;
 
 /**
  * Created by JAkutenshi on 28.05.2016.
@@ -36,15 +38,26 @@ public class ClassParser extends UMLEntityParser {
         for (PsiField psiField : fields) {
             aClass.addField(parseField(psiField));
         }
-//если класс является службой
-        if (aClass.getFields().size() == 0) {
-            aClass.setUtility(true);
-        }
 //методы
         PsiMethod[] psiMethods = psiClass.getMethods();
         for (PsiMethod psiMethod : psiMethods) {
             aClass.addMethod(parseMethod(psiMethod));
         }
+        //если класс является службой
+        System.out.println(aClass.getMethods());
+        ArrayList<Method> methods = aClass.getMethods();
+        boolean isUtility=true;
+        int i = 0;
+
+        while(isUtility && i < methods.size()) {
+            if(!methods.get(i).getKeywords().contains(Keyword.STATIC)){
+                isUtility = false;
+            }
+            i++;
+        }
+        if (isUtility) aClass.setUtility(true);
+
+
 //является ли наследником
         aClass.setExtendsClass(parseExtendsEntity(psiClass));
 //список реализующих интерфейсов
