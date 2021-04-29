@@ -92,4 +92,9 @@ public abstract class UMLEntity implements Generatable {
             return null;
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%s)", name, packagePath);
+    }
 }

@@ -11,13 +11,13 @@ import com.jakutenshi.projects.umlplugin.container.entities.UMLEntity;
 import com.jakutenshi.projects.umlplugin.parsers.ClassParser;
 import com.jakutenshi.projects.umlplugin.parsers.EnumParser;
 import com.jakutenshi.projects.umlplugin.parsers.InterfaceParser;
-import com.sun.jna.platform.unix.X11;
-
+import com.jakutenshi.projects.umlplugin.ui.UMLEntityChooser;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Created by JAkutenshi on 25.05.2016.
+ * Modified by Alessadro Caldonazzi on 01/04/2021
  */
 public class GenDiagramAction extends AnAction {
     private static Project project;
@@ -40,16 +40,21 @@ public class GenDiagramAction extends AnAction {
         container.clearContainer();
         ArrayList<UMLEntity> umlEntities = new ArrayList<>();
         parseForJavaFiles(project.getBaseDir().getChildren(), umlEntities);
-        for (UMLEntity entity : umlEntities) {
-            container.addUMLEntity(entity);
+
+        UMLEntityChooser umlChooser = new UMLEntityChooser(project, umlEntities);
+        List<UMLEntity> choosenEntities =  umlChooser.showAndGetResult();
+        if(choosenEntities != null && choosenEntities.size()>0) {
+            umlEntities = (ArrayList<UMLEntity>) choosenEntities;
+            for (UMLEntity entity : umlEntities) {
+                container.addUMLEntity(entity);
+            }
+            DiagramContainer.getInstance().notifyObservers();
         }
-        DiagramContainer.getInstance().notifyObservers();
     }
 
     private void parseForJavaFiles(VirtualFile[] virtualFiles, ArrayList<UMLEntity> umlEntities) {
         if (virtualFiles == null) return;
         PsiFile psiFile;
-
         for (VirtualFile virtualFile : virtualFiles) {
             psiFile = psiManager.findFile(virtualFile);
             //Find all Java files
