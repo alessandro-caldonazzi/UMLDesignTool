@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.caldonazzi.alessandro.uml</id>
   <name>UML Generator</name>
-  <version>0.1.8</version>
+  <version>0.2.0</version>
   <vendor>Alessandro Caldonazzi</vendor>
 
   <depends>com.intellij.modules.java</depends>
@@ -18,6 +18,8 @@
         To export click the second icon, select a destination path and confirm<br>
         <br>Erase tool:<br>
         To delete a UML entity, select the erase tool from the toolbar, then click on the entity<br>
+        <br>Picking classes:<br>
+        As requested in issue #6, it is now possible to choose which class to add to the diagram<br>
     ]]></description>
 
   <change-notes><![CDATA[
@@ -26,7 +28,8 @@
         Fixed export bugs.<br>
         Fixed UML Positioning.<br>
         Fixed Android Studio Compatibility.<br>
-        Add erase tool to delete UML entities
+        Add erase tool to delete UML entities<br>
+        As requested in issue #6, it is now possible to choose which class to add to the diagram<br>
         ]]>
   </change-notes>
 
